@@ -1,5 +1,4 @@
 package com.example.demo.entity;
-
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -10,7 +9,6 @@ import javax.persistence.Table;
 
 import lombok.Getter;
 import lombok.Setter;
-
 @Entity
 @Getter
 @Setter
@@ -28,7 +26,8 @@ public class User {
 	private String password;
 	@Enumerated(EnumType.STRING)
 	private Role role;
-	
+<<<<<<< Updated upstream
 
-
+=======
+>>>>>>> Stashed changes
 }
