@@ -1,6 +1,8 @@
 package com.example.demo.service;
 
 import java.util.List;
+import java.util.Optional;
+
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.slf4j.Logger;
@@ -50,5 +52,41 @@ public class UserService {
 		}
 		return null;
 	}
+	public UserDTO getUserById(Integer regid) {
+		return (userRepo.findById(regid).map(user ->modelMapper.map(user, UserDTO.class)).orElse(null));
+	}
+	
+	public String updateUser(UserDTO userDTO) {
+		try {
+			LOGGER.debug("Inside UpdateUser:"+userDTO.toString());
+			Optional<User> userOptional=userRepo.findById(userDTO.getRegid());
+			if(userOptional.isPresent()) {
+				User user=userOptional.get();
+				user.setFirstname(userDTO.getFirstname());
+				user.setLastname(userDTO.getLastname());
+				user.setAddress(userDTO.getAddress());
+				user.setAge(userDTO.getAge());
+				user.setUsername(userDTO.getUsername());
+				user.setPassword(userDTO.getPassword());
+				user.setRole(userDTO.getRole());
+				userRepo.save(user);
+				return "update";
+			}
+		}catch(Exception ex) {
+			 ex.printStackTrace();
+				LOGGER.error("Exception in add Category::"+ex.getMessage());
+		}
+		return "not update";
+	}
+	public String deleteUser(Integer regid) {
+		Optional<User> userOptional=userRepo.findById(regid);
+		if(userOptional.isPresent()) {
+			userRepo.deleteById(regid);
+			return "User Successfully Deleted";
+			
+		}
+		return "User not deleted";
+	}
+	
 
 }
