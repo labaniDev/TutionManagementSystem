@@ -52,14 +52,14 @@ public class UserService {
 		}
 		return null;
 	}
-	public UserDTO getUserById(Integer regid) {
-		return (userRepo.findById(regid).map(user ->modelMapper.map(user, UserDTO.class)).orElse(null));
+	public UserDTO getUserById(Integer id) {
+		return (userRepo.findById(id).map(user ->modelMapper.map(user, UserDTO.class)).orElse(null));
 	}
 	
 	public String updateUser(UserDTO userDTO) {
 		try {
 			LOGGER.debug("Inside UpdateUser:"+userDTO.toString());
-			Optional<User> userOptional=userRepo.findById(userDTO.getRegid());
+			Optional<User> userOptional=userRepo.findById(userDTO.getId());
 			if(userOptional.isPresent()) {
 				User user=userOptional.get();
 				user.setFirstname(userDTO.getFirstname());
@@ -78,10 +78,10 @@ public class UserService {
 		}
 		return "not update";
 	}
-	public String deleteUser(Integer regid) {
-		Optional<User> userOptional=userRepo.findById(regid);
+	public String deleteUser(Integer id) {
+		Optional<User> userOptional=userRepo.findById(id);
 		if(userOptional.isPresent()) {
-			userRepo.deleteById(regid);
+			userRepo.deleteById(id);
 			return "User Successfully Deleted";
 			
 		}

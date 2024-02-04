@@ -1,20 +1,16 @@
 package com.example.demo.dto;
-
 import java.util.List;
-import java.util.Set;
-
-import com.example.demo.entity.Classes;
-
 import lombok.Getter;
 import lombok.Setter;
-
 @Getter
 @Setter
 public class TeacherDTO {
 	private Integer id;
-	private String name;
-	private String contactno;
+	private String firstname;
+	private String lastname;
+	private Integer age;
 	private String address;
+	private Long phno;
 	private UserDTO user;
 	
 	private List<ClassesDTO> classes;

@@ -8,7 +8,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class UserDTO {
-	private Integer regid;
+	private Integer id;
 	private String firstname;
 	private String lastname;
 	private Integer age;

@@ -1,14 +1,9 @@
 package com.example.demo.entity;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,8 +17,7 @@ public class Classes {
 	private Integer id;
 	private String classname;
 	
-//	@ManyToOne
-//	@JoinColumn(name="teacher_id")
-//	private Teacher teacher;
+//	 @ManyToMany(mappedBy = "classes")
+//	    private List<Teacher> teachers = new ArrayList<>();
 
 }

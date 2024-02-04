@@ -21,9 +21,9 @@ public class AssignmentsController {
 	AssignmentsService assignmentsService;
 	
 	@PostMapping("/createAssignments")
-	public ResponseEntity createAssignments(@RequestBody AssignmentsDTO assignmentsDTO) {
+	public ResponseEntity<AssignmentsDTO> createAssignments(@RequestBody AssignmentsDTO assignmentsDTO) {
 		assignmentsService.createAssignments(assignmentsDTO);
-		return new ResponseEntity(HttpStatus.CREATED);
+		return new ResponseEntity<AssignmentsDTO>(HttpStatus.CREATED);
 	}
 	@GetMapping("/getAllAssignments")
 	public List<AssignmentsDTO> getAllAssignments(){

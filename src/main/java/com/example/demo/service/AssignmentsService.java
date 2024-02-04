@@ -6,9 +6,7 @@ import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.example.demo.dto.AssignmentsDTO;
-import com.example.demo.dto.ExamsDTO;
 import com.example.demo.entity.Assignments;
 import com.example.demo.repository.AssignmentsRepo;
 
