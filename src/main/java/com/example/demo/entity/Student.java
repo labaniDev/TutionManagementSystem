@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.Getter;
@@ -30,11 +31,10 @@ public class Student {
 	private String address;
 	private Long phno;
 	
-	@ManyToMany
-    @JoinTable(name = "teacher_student",
-               joinColumns = @JoinColumn(name = "teacher_id"),
-               inverseJoinColumns = @JoinColumn(name = "student_id"))
-    private List<Student> students;
+	@OneToOne
+	@JoinColumn(name="regid",referencedColumnName="id")
+	private User user;
+	
 	
 	@OneToMany
     @JoinColumn(name = "student_id")
