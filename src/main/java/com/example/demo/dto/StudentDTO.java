@@ -1,5 +1,7 @@
 package com.example.demo.dto;
 import java.util.List;
+import java.util.Set;
+
 import com.example.demo.entity.Assignments;
 import com.example.demo.entity.Classes;
 import com.example.demo.entity.Exams;
@@ -20,5 +22,7 @@ public class StudentDTO {
 	private List<Classes> classes;
 	private List<Exams> exams;
 	private List<Assignments> assignments;
+	private Set<CourseDTO> courses;
+
 
 }

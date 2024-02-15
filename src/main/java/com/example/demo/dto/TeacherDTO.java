@@ -1,5 +1,7 @@
 package com.example.demo.dto;
 import java.util.List;
+import java.util.Set;
+
 import lombok.Getter;
 import lombok.Setter;
 @Getter
@@ -16,5 +18,7 @@ public class TeacherDTO {
 	private List<ClassesDTO> classes;
 	private List<ExamsDTO> exams;
 	private List<AssignmentsDTO> assignments;
+	
+	private Set<StudentDTO> students;
 
 }

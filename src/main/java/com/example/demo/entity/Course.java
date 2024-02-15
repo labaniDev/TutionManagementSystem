@@ -1,10 +1,18 @@
 package com.example.demo.entity;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -19,5 +27,11 @@ public class Course {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String name;
+	
+	@ManyToMany(mappedBy = "courses",cascade = {
+	        CascadeType.ALL
+	    },fetch = FetchType.LAZY)
+	@JsonIgnore
+	private Set<Student> students = new HashSet<>();
 
 }

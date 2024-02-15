@@ -1,10 +1,17 @@
 package com.example.demo.entity;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -39,6 +46,12 @@ public class Teacher {
 	@OneToMany
     @JoinColumn(name = "teacher_id")
     private List<Assignments> assignments;
+	
+	@ManyToMany(fetch = FetchType.LAZY,cascade = {
+	        CascadeType.ALL
+	    })
+	@JoinTable(name="teacher_student", joinColumns = { @JoinColumn(name = "teacherid")}, inverseJoinColumns = { @JoinColumn(name = "studentid")})
+	private Set<Student> students = new HashSet<Student>();
 	
 	
 
